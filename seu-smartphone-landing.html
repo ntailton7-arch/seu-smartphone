@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seu Smartphone — Loja e Assistência Técnica | João Pessoa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F6F5;
+    --surface:#FFFFFF;
+    --ink:#15171E;
+    --ink-muted:#5B616C;
+    --brand:#2A4BFF;
+    --brand-ink:#172E9C;
+    --accent:#FFB300;
+    --accent-ink:#3A2600;
+    --border:#E4E6EA;
+    --dark-bg:#12141C;
+    --dark-surface:#1A1D28;
+    --dark-border:#2B2F3D;
+    --success:#1FAE64;
+    --r-s:10px;
+    --r-m:18px;
+    --r-l:30px;
+    --font-display:'Space Grotesk', 'Inter', sans-serif;
+    --font-body:'Inter', sans-serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12141C;
+      --surface:#1A1D28;
+      --ink:#F3F4F7;
+      --ink-muted:#A6ACBA;
+      --border:#2B2F3D;
+      --brand:#5E7BFF;
+      --accent:#FFC64A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12141C;
+    --surface:#1A1D28;
+    --ink:#F3F4F7;
+    --ink-muted:#A6ACBA;
+    --border:#2B2F3D;
+    --brand:#5E7BFF;
+    --accent:#FFC64A;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    line-height:1.1;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:40;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  .site-header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:72px;
+    gap:20px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.05rem;
+    white-space:nowrap;
+  }
+  .logo-mark{
+    width:34px; height:34px;
+    border-radius:9px;
+    background:linear-gradient(155deg, var(--brand), var(--brand-ink));
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .logo-mark svg{width:18px; height:18px;}
+  nav.main-nav{
+    display:flex;
+    gap:28px;
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--ink-muted);
+  }
+  nav.main-nav a{text-decoration:none; transition:color .15s;}
+  nav.main-nav a:hover{color:var(--ink);}
+  .header-cta{
+    display:flex; align-items:center; gap:12px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.92rem;
+    padding:11px 20px;
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:focus-visible{outline:2px solid var(--brand); outline-offset:2px;}
+  .btn-accent{
+    background:var(--accent);
+    color:var(--accent-ink);
+  }
+  .btn-accent:hover{transform:translateY(-1px); box-shadow:0 10px 24px -8px color-mix(in srgb, var(--accent) 60%, transparent);}
+  .btn-outline{
+    background:transparent;
+    border-color:var(--border);
+    color:var(--ink);
+  }
+  .btn-outline:hover{border-color:var(--brand); color:var(--brand);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--brand);
+    padding:11px 4px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:64px 0 48px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.82rem;
+    font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    color:var(--ink-muted);
+    margin-bottom:22px;
+  }
+  .status-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--success) 20%, transparent);
+    flex-shrink:0;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw, 3.15rem);
+    max-width:14ch;
+  }
+  .hero-sub{
+    margin-top:20px;
+    font-size:1.08rem;
+    color:var(--ink-muted);
+    max-width:46ch;
+  }
+  .rating-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:26px;
+    font-size:0.94rem;
+  }
+  .stars{color:var(--accent); font-size:1.05rem; letter-spacing:1px;}
+  .rating-row .rating-text{color:var(--ink-muted);}
+  .rating-row strong{color:var(--ink);}
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:28px;
+  }
+  .address-line{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:26px;
+    font-size:0.88rem;
+    color:var(--ink-muted);
+    max-width:42ch;
+  }
+  .address-line svg{flex-shrink:0; margin-top:2px;}
+  .address-line a{text-decoration:underline; text-underline-offset:2px;}
+
+  /* Phone mockup */
+  .hero-visual{display:flex; justify-content:center;}
+  .phone{
+    position:relative;
+    width:270px;
+    height:548px;
+    border-radius:44px;
+    background:#0C0E14;
+    padding:12px;
+    box-shadow:0 30px 60px -20px rgba(20,25,50,.35), 0 0 0 1px rgba(255,255,255,.04) inset;
+  }
+  .phone-screen{
+    position:relative;
+    width:100%;
+    height:100%;
+    border-radius:34px;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 20% 0%, #3D5CFF 0%, transparent 55%),
+      radial-gradient(120% 90% at 100% 100%, #17209E 0%, transparent 60%),
+      linear-gradient(200deg, #1a2350, #0d1130 70%);
+    display:flex;
+    flex-direction:column;
+    padding:26px 18px 20px;
+  }
+  .phone-notch{
+    position:absolute;
+    top:12px; left:50%; transform:translateX(-50%);
+    width:90px; height:22px;
+    background:#0C0E14;
+    border-radius:14px;
+    z-index:5;
+  }
+  .phone-time{
+    color:#fff;
+    font-family:var(--font-display);
+    font-size:2.6rem;
+    font-weight:600;
+    text-align:center;
+    margin-top:14px;
+  }
+  .phone-date{
+    color:rgba(255,255,255,.65);
+    text-align:center;
+    font-size:0.85rem;
+    margin-top:4px;
+  }
+  .phone-cards{
+    margin-top:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .phone-chip{
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(6px);
+    border-radius:16px;
+    padding:11px 13px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+    font-size:0.78rem;
+    line-height:1.25;
+    opacity:0;
+    transform:translateY(10px);
+    animation:chipIn .5s ease forwards;
+  }
+  .phone-chip .chip-icon{font-size:1.05rem; flex-shrink:0;}
+  .phone-chip:nth-child(1){animation-delay:.25s;}
+  .phone-chip:nth-child(2){animation-delay:.45s;}
+  .phone-chip:nth-child(3){animation-delay:.65s;}
+  @keyframes chipIn{to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){
+    .phone-chip{animation:none; opacity:1; transform:none;}
+  }
+
+  /* ---------- Trust strip ---------- */
+  .trust-strip{
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    background:var(--surface);
+  }
+  .trust-strip .wrap{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+    padding:26px 24px;
+  }
+  .trust-item{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .trust-item .big{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    font-weight:600;
+  }
+  .trust-item .label{
+    font-size:0.82rem;
+    color:var(--ink-muted);
+  }
+
+  /* ---------- Section headings ---------- */
+  .section{padding:88px 0;}
+  .section-head{
+    max-width:56ch;
+    margin-bottom:48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-muted);
+    font-size:1.03rem;
+  }
+
+  /* ---------- Services ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    border-radius:var(--r-m);
+    overflow:hidden;
+  }
+  .service-card{
+    background:var(--surface);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .service-icon{
+    width:42px; height:42px;
+    border-radius:12px;
+    background:color-mix(in srgb, var(--brand) 12%, transparent);
+    color:var(--brand);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .service-card h3{
+    font-size:1.05rem;
+    font-weight:600;
+  }
+  .service-card p{
+    font-size:0.92rem;
+    color:var(--ink-muted);
+  }
+
+  /* ---------- Seminovos (dark) ---------- */
+  .seminovos{
+    background:var(--dark-bg);
+    color:#F3F4F7;
+    border-radius:0;
+  }
+  .seminovos .section-head p{color:#A6ACBA;}
+  .seminovos .section-head h2{color:#fff;}
+  .ig-quote{
+    margin-top:20px;
+    padding:16px 18px;
+    border-left:2px solid var(--accent);
+    font-style:normal;
+    font-size:0.95rem;
+    color:#D7DAE2;
+  }
+  .ig-quote cite{
+    display:block;
+    margin-top:8px;
+    font-size:0.82rem;
+    color:#828A9C;
+    font-style:normal;
+  }
+  .devices-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:44px;
+  }
+  .device-card{
+    background:var(--dark-surface);
+    border:1px solid var(--dark-border);
+    border-radius:var(--r-m);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .device-glyph{
+    width:46px; height:46px;
+    border-radius:13px;
+    background:rgba(94,123,255,.16);
+    color:#8EA1FF;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .device-card h3{font-size:1.08rem; color:#fff;}
+  .device-card ul{
+    margin:0; padding:0;
+    list-style:none;
+    display:flex; flex-direction:column; gap:8px;
+    font-size:0.88rem;
+    color:#A6ACBA;
+  }
+  .device-card li{
+    display:flex; gap:8px; align-items:flex-start;
+  }
+  .device-card li svg{flex-shrink:0; margin-top:3px; color:var(--success);}
+
+  /* ---------- Reviews ---------- */
+  .reviews-panel{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+    align-items:center;
+  }
+  .rating-hero{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .rating-hero .num{
+    font-family:var(--font-display);
+    font-size:5rem;
+    font-weight:700;
+    line-height:1;
+  }
+  .rating-hero .stars{font-size:1.4rem;}
+  .rating-hero .count{color:var(--ink-muted); font-size:0.95rem;}
+  .reviews-copy p{
+    color:var(--ink-muted);
+    font-size:1.02rem;
+    max-width:46ch;
+  }
+  .reviews-copy .btn{margin-top:24px;}
+
+  /* ---------- Location ---------- */
+  .location-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:48px;
+    align-items:stretch;
+  }
+  .info-list{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .info-row{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--border);
+  }
+  .info-row:last-child{border-bottom:none; padding-bottom:0;}
+  .info-icon{
+    width:38px; height:38px;
+    border-radius:11px;
+    background:color-mix(in srgb, var(--brand) 12%, transparent);
+    color:var(--brand);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .info-row h3{font-size:0.98rem; margin-bottom:4px;}
+  .info-row p, .info-row a{font-size:0.92rem; color:var(--ink-muted);}
+  .info-row a{text-decoration:underline; text-underline-offset:2px;}
+  .map-frame{
+    border-radius:var(--r-m);
+    overflow:hidden;
+    border:1px solid var(--border);
+    min-height:340px;
+  }
+  .map-frame iframe{
+    width:100%; height:100%; min-height:340px; border:0; display:block;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:52px 0 32px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:40px;
+  }
+  .footer-brand .logo{margin-bottom:14px;}
+  .footer-brand p{color:var(--ink-muted); font-size:0.9rem; max-width:32ch;}
+  .footer-col h4{
+    font-size:0.85rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    font-size:0.9rem;
+    color:var(--ink-muted);
+    text-decoration:none;
+    margin-bottom:10px;
+  }
+  .footer-col a:hover{color:var(--ink);}
+  .footer-bottom{
+    margin-top:44px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    font-size:0.8rem;
+    color:var(--ink-muted);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    nav.main-nav{display:none;}
+    .hero .wrap{grid-template-columns:1fr; gap:44px;}
+    .hero-visual{order:-1;}
+    .phone{width:220px; height:448px;}
+    .phone-time{font-size:2.1rem;}
+    .trust-strip .wrap{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .devices-grid{grid-template-columns:1fr;}
+    .reviews-panel{grid-template-columns:1fr; gap:32px;}
+    .location-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+  }
+  @media (max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+    .section{padding:64px 0;}
+    .header-cta .btn-outline{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="2" width="12" height="20" rx="3" stroke="white" stroke-width="1.6"/><line x1="10" y1="19" x2="14" y2="19" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      Seu Smartphone
+    </div>
+    <nav class="main-nav">
+      <a href="#servicos">Serviços</a>
+      <a href="#seminovos">Seminovos</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#localizacao">Localização</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-outline" href="tel:+5583996380302">(83) 99638-0302</a>
+      <a class="btn btn-accent" href="https://wa.me/5583996380302?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="status-pill"><span class="status-dot"></span>Aberto agora · fecha às 18h</span>
+      <h1>Conserto rápido. Seminovo com garantia de verdade.</h1>
+      <p class="hero-sub">Assistência técnica especializada e iPhones e Xiaomis seminovos revisados a fundo — tudo no mesmo lugar, no centro de João Pessoa.</p>
+      <div class="rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text"><strong>5.0</strong> · 7 avaliações no Google</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="https://wa.me/5583996380302?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        <a class="btn btn-outline" href="tel:+5583996380302">Ligar agora</a>
+      </div>
+      <div class="address-line">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Empresarial Epitácio Pessoa — Av. Pres. Epitácio Pessoa, 1251, 11º andar, sala 1107, Estados, João Pessoa - PB.
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Empresarial+Epit%C3%A1cio+Pessoa%2C+Av.+Pres.+Epit%C3%A1cio+Pessoa%2C+1251%2C+Jo%C3%A3o+Pessoa+-+PB%2C+58030-901" target="_blank" rel="noopener">Ver rota</a>
+        </span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-time">09:41</div>
+          <div class="phone-date">Aberto agora · fecha às 18h</div>
+          <div class="phone-cards">
+            <div class="phone-chip"><span class="chip-icon">🔋</span>Bateria trocada e testada em 40 min</div>
+            <div class="phone-chip"><span class="chip-icon">📱</span>iPhone seminovo revisado disponível</div>
+            <div class="phone-chip"><span class="chip-icon">⭐</span>5.0 de nota no Google — 7 avaliações</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="wrap">
+    <div class="trust-item">
+      <span class="big">5.0 ★</span>
+      <span class="label">Nota no Google (7 avaliações)</span>
+    </div>
+    <div class="trust-item">
+      <span class="big">17.7K+</span>
+      <span class="label">Seguidores no Instagram</span>
+    </div>
+    <div class="trust-item">
+      <span class="big">90 dias</span>
+      <span class="label">Garantia nos seminovos</span>
+    </div>
+    <div class="trust-item">
+      <span class="big">João Pessoa</span>
+      <span class="label">Atendimento no bairro dos Estados</span>
+    </div>
+  </div>
+</div>
+
+<section id="servicos" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Assistência técnica sem enrolação</h2>
+      <p>Avaliamos o aparelho, explicamos o problema e só depois passamos o orçamento. Sem surpresas.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 7h8M8 11h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Troca de tela</h3>
+        <p>Peças de qualidade e instalação no mesmo dia para a maioria dos modelos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="7" y="4" width="10" height="17" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M10 2h4v2h-4z" fill="currentColor"/></svg></div>
+        <h3>Troca de bateria</h3>
+        <p>Testamos a saúde da bateria antes de indicar a troca — sem venda desnecessária.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h4l1.5-2h7L17 8h4v11H3z" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Reparo de câmera</h3>
+        <p>Lentes, sensores e conectores revisados para devolver a nitidez das suas fotos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="8" y="8" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Placa e conectores</h3>
+        <p>Diagnóstico detalhado para problemas de carga, som e conexão.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Diagnóstico gratuito</h3>
+        <p>Avaliamos o aparelho e explicamos o problema antes de qualquer orçamento.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Acessórios originais</h3>
+        <p>Capas, películas e carregadores compatíveis com o seu modelo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="seminovos" class="section seminovos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Seminovo, mas com qualidade de novo</h2>
+      <p>Selecionamos, revisamos e testamos cada aparelho antes de chegar até você.</p>
+      <blockquote class="ig-quote">
+        "Aqui na Seu Smartphone, você encontra iPhones seminovos selecionados, revisados e com a segurança que você procura."
+        <cite>@seusmartphonepb no Instagram</cite>
+      </blockquote>
+    </div>
+    <div class="devices-grid">
+      <div class="device-card">
+        <div class="device-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>iPhone seminovo</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Testado em dezenas de pontos antes da venda</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bateria com saúde verificada</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Garantia de 90 dias</li>
+        </ul>
+      </div>
+      <div class="device-card">
+        <div class="device-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.5" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Xiaomi seminovo</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Revisão completa de hardware e software</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Nota fiscal e suporte pós-venda</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ótimo custo-benefício</li>
+        </ul>
+      </div>
+      <div class="device-card">
+        <div class="device-glyph"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Acessórios</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Capas, películas e carregadores</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Compatíveis com o seu modelo</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo pra o aparelho durar mais</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="section">
+  <div class="wrap reviews-panel">
+    <div class="rating-hero">
+      <span class="num">5.0</span>
+      <span class="stars">★★★★★</span>
+      <span class="count">Baseado em 7 avaliações no Google</span>
+    </div>
+    <div class="reviews-copy">
+      <h2>O que os clientes dizem, direto no Google</h2>
+      <p>Nossas avaliações ficam públicas no perfil da loja no Google — dá pra ler todas antes de decidir, sem filtro.</p>
+      <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&destination=Empresarial+Epit%C3%A1cio+Pessoa%2C+Av.+Pres.+Epit%C3%A1cio+Pessoa%2C+1251%2C+Jo%C3%A3o+Pessoa+-+PB%2C+58030-901" target="_blank" rel="noopener">Ver avaliações no Google</a>
+    </div>
+  </div>
+</section>
+
+<section id="localizacao" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Encontre a loja</h2>
+      <p>No Empresarial Epitácio Pessoa, no bairro dos Estados — fácil de chegar e estacionar.</p>
+    </div>
+    <div class="location-grid">
+      <div class="info-list">
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <div>
+            <h3>Endereço</h3>
+            <p>Empresarial Epitácio Pessoa — Av. Pres. Epitácio Pessoa, 1251, 11º andar, sala 1107, Estados, João Pessoa - PB, 58030-901</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div>
+            <h3>Horário</h3>
+            <p>Aberto agora — fecha às 18h. Confirme por telefone em feriados.</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 5h4l2 5-2.5 1.5a12 12 0 0 0 5 5L14 14l5 2v4c0 1-1 2-2 2C10 22 2 14 2 7c0-1 1-2 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div>
+            <h3>Telefone</h3>
+            <a href="tel:+5583996380302">(83) 99638-0302</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></div>
+          <div>
+            <h3>Instagram</h3>
+            <a href="https://www.instagram.com/seusmartphonepb/" target="_blank" rel="noopener">@seusmartphonepb — 17.7K+ seguidores</a>
+          </div>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://maps.google.com/maps?q=Av.%20Pres.%20Epit%C3%A1cio%20Pessoa%2C%201251%2C%20Jo%C3%A3o%20Pessoa%20-%20PB&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa até a Seu Smartphone"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="2" width="12" height="20" rx="3" stroke="white" stroke-width="1.6"/><line x1="10" y1="19" x2="14" y2="19" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          Seu Smartphone
+        </div>
+        <p>Loja e assistência técnica em João Pessoa. Conserto rápido, seminovos com garantia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#servicos">Serviços</a>
+        <a href="#seminovos">Seminovos</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#localizacao">Localização</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="tel:+5583996380302">(83) 99638-0302</a>
+        <a href="https://wa.me/5583996380302" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/seusmartphonepb/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Seu Smartphone — Loja e Assistência Técnica.</span>
+      <span>Informações do perfil público no Google. Confirme horários por telefone.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
